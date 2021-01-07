@@ -10,7 +10,7 @@ import java.util.List;
 public class QuickSort {
     private static void quicksort(List<Integer> lista, int izq, int der)
     {
-        int pivote = lista.get(izq), aux, i = izq, d = der;
+        int pivote = lista.get(izq), aux, ad, a, i = izq, d = der;
         
         while(i<d)
         {
@@ -21,14 +21,18 @@ public class QuickSort {
             if(i < d)
             {
                 aux = lista.get(i);
-                int ad= lista.get(d);
+                ad= lista.get(d);
                 lista.set(i, ad);
                 lista.set(d, aux);
+                
             }
         }
-        lista.set(izq, d);
+        a=lista.get(d);
+        lista.set(izq, a);
         lista.set(d, pivote);
         
+          
+            
         if(izq < d -1)
              quicksort(lista, izq, d-1);
         
@@ -43,11 +47,14 @@ public class QuickSort {
      */
     public static void main(String[] args) {
         List<Integer> lista = new ArrayList<Integer>();
+        lista.add(5);
         lista.add(4);
         lista.add(3);
+        lista.add(21);
+        lista.add(10);
         lista.add(2);
         lista.add(1);
-        
+        lista.add(8);
         int izq = 0, der = lista.size()-1;
      
         System.out.println("Este es el arreglo desordenado");
