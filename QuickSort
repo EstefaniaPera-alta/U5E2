@@ -1,0 +1,74 @@
+package quicksort;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author FANNY
+ */
+public class QuickSort {
+    private static void quicksort(List<Integer> lista, int izq, int der)
+    {
+        int pivote = lista.get(izq), aux, i = izq, d = der;
+        
+        while(i<d)
+        {
+            while (lista.get(i) <= pivote && i<d)
+                i++;
+            while (lista.get(d) > pivote)
+                d--;
+            if(i < d)
+            {
+                aux = lista.get(i);
+                int ad= lista.get(d);
+                lista.set(i, ad);
+                lista.set(d, aux);
+            }
+        }
+        lista.set(izq, d);
+        lista.set(d, pivote);
+        
+        if(izq < d -1)
+             quicksort(lista, izq, d-1);
+        
+        if(d + 1 < der)
+            quicksort(lista, d+1, der);
+        
+        
+    }
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        List<Integer> lista = new ArrayList<Integer>();
+        lista.add(4);
+        lista.add(3);
+        lista.add(2);
+        lista.add(1);
+        
+        int izq = 0, der = lista.size()-1;
+     
+        System.out.println("Este es el arreglo desordenado");
+        for(int j=0; j < lista.size(); j++)
+        {
+            System.out.print(" " + lista.get(j));
+            
+        }
+        System.out.println("  ");
+        System.out.println("----------------");
+        System.out.println("Este es el arreglo ordenado");
+        
+        quicksort(lista, izq, der);
+        
+        for(int j=0; j < lista.size(); j++)
+        {
+            System.out.print(" " + lista.get(j));
+            
+        }
+        System.out.println("  ");
+        
+    }
+    
+}
